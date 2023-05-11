@@ -8,6 +8,9 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.function.BiPredicate;
 
+import android.view.WindowManager;
+
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
@@ -17,7 +20,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 public class DisableFlagSecure implements IXposedHookLoadPackage {
 
     @Override
-    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) {
+    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
         if (!lpparam.packageName.equals("org.telegram.messenger"))
             return;
 
