@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Disable FLAG_SECURE</string>
-    <string name="xposed_description">Disable FLAG_SECURE on all windows, enabling screenshots in apps that normally wouldn\'t allow it.</string>
-    <string-array name="scope">
-        <item>android</item>
-    </string-array>
+  <string name="app_name">Disable Telegram Screenshot</string>
+  <string name="xposed_description">enable FLAG_SECURE</string>
+  <string-array name="scope">
+    <item>android</item>
+    <item>org.telegram.messenger</item>
+  </string-array>
 </resources>

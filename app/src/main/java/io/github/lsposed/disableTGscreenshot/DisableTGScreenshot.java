@@ -1,4 +1,4 @@
-package io.github.lsposed.disableflagsecure;
+package io.github.lsposed.disableTGscreenshot;
 
 import android.os.Build;
 import android.util.Log;
@@ -17,7 +17,7 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public class DisableFlagSecure implements IXposedHookLoadPackage {
+public class DisableTGScreenshot implements IXposedHookLoadPackage {
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
