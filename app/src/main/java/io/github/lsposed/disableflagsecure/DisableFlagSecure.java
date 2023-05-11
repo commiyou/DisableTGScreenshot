@@ -10,7 +10,7 @@ import java.util.function.BiPredicate;
 
 import android.view.WindowManager;
 
-
+import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
