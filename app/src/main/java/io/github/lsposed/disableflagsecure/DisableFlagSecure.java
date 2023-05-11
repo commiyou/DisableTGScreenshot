@@ -45,18 +45,19 @@ public class DisableFlagSecure implements IXposedHookLoadPackage {
                     XposedHelpers.findAndHookMethod(
                             windowsState,
                             "isSecureLocked",
-                            XC_MethodReplacement.returnConstant(false));
+                            XC_MethodReplacement.returnConstant(true));
                 } else {
                     XposedHelpers.findAndHookMethod(
                             "com.android.server.wm.WindowManagerService",
                             loadPackageParam.classLoader,
                             "isSecureLocked",
                             windowsState,
-                            XC_MethodReplacement.returnConstant(false));
+                            XC_MethodReplacement.returnConstant(true));
                 }
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
+            /*
             try {
                 deoptimizeMethod(XposedHelpers.findClass("com.android.server.wm.WindowStateAnimator", loadPackageParam.classLoader), "createSurfaceLocked");
                 var c = XposedHelpers.findClass("com.android.server.display.DisplayManagerService", loadPackageParam.classLoader);
@@ -78,6 +79,7 @@ public class DisableFlagSecure implements IXposedHookLoadPackage {
             } catch (Throwable t) {
                 XposedBridge.log(t);
             }
+            */
         }
     }
 
