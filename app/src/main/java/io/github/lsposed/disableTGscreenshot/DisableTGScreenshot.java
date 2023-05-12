@@ -7,6 +7,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.function.BiPredicate;
+import android.view.WindowManager;
+
 
 import android.view.WindowManager;
 
@@ -32,6 +34,18 @@ public class DisableTGScreenshot implements IXposedHookLoadPackage {
                 WindowManager.LayoutParams params = ((android.app.Activity) activity).getWindow().getAttributes();
                 params.flags |= WindowManager.LayoutParams.FLAG_SECURE;
                 ((android.app.Activity) activity).getWindow().setAttributes(params);
+            }
+        });
+        
+        XposedHelpers.findAndHookMethod(WindowManager.LayoutParams.class, "setFlags", int.class, int.class, new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                int flags = (int) param.args[0];
+                if ((flags & WindowManager.LayoutParams.FLAG_SECURE) == 0) {
+                    // add FLAG_SECURE if not present
+                    flags |= WindowManager.LayoutParams.FLAG_SECURE;
+                    param.args[0] = flags;
+                }
             }
         });
     }
